@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "A simple RESTful API for managing students",
   "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
-  },
+
+  
   "engines": {
     "node": ">=16.0.0"
   },
