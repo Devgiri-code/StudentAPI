@@ -1,7 +1,9 @@
 const express = require('express');
+const cors = require('cors'); // Importing CORS
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors()); // Enable CORS
 app.use(express.json()); // Middleware to parse JSON bodies
 
 // Mock "database" (in-memory storage for this example)
@@ -48,6 +50,12 @@ app.delete('/students/:id', (req, res) => {
 
   const deletedStudent = students.splice(studentIndex, 1);
   res.json(deletedStudent);
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
 });
 
 // Start the server
